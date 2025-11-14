@@ -35,12 +35,14 @@ export const initializeDatabase = async () => {
 	// Create tables
 	Song.createTable()
 	
-	// Only seed in development
-	if (config.isDevelopment()) {
-		Song.seed()
-	}
+	// Seed in all environments (or just production/dev as you like)
+	Song.seed()
 	
 	console.log('✅ Database initialization complete')
 }
+
+	
+	console.log('✅ Database initialization complete')
+
 
 export default db
