@@ -4,14 +4,11 @@ import { logMiddleware } from "./middleware/middleware.js"
 import { validateApiKey, validateApiKeyProduction } from "./middleware/apiKey.js"
 import songRoutes from "./routes/songRoutes.js"
 import { initializeDatabase } from "./config/database.js"
-import Song from './models/Song.js'
 
 const app = express()
 
 // Initialize database before starting server
 await initializeDatabase()
-Song.createTable()
-Song.seed()
 
 // Global middleware
 app.use(express.json())
