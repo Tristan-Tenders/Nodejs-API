@@ -17,10 +17,11 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Database files (for SQLite)
+# Database files
 *.sqlite
 *.sqlite3
 *.db
+database.sqlite
 
 # Build outputs
 dist/

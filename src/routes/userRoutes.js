@@ -1,5 +1,5 @@
 import express from "express"
-import { logMiddleware } from "../../middleware/middleware.js"
+import { logMiddleware } from "../middleware/middleware.js"
 import * as userController from "../controllers/userController.js"
 
 // Create a router instance
