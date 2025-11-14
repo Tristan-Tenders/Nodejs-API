@@ -1,33 +1,18 @@
 import express from "express"
 import { logMiddleware } from "./middleware/middleware.js"
-
+import { getAllUsers, getUserById, createUser,updateUser,deleteUser } from "./src/controllers/userController.js"
 
 const app = express()
 const PORT = 3000
 
-const users = [
-	{ id: 1, name: "Alice" },
-	{ id: 2, name: "Bob" },
-	{ id: 3, name: "Charlie" },
-	{ id: 4, name: "Dave" },
-]
-
 app.use(express.json())
 
-// middleware to log request body
-
-app.get("/", logMiddleware, (req, res) => {
-	res.json({ users,date })
-})
-
-app.get("/", (req, res) => {
-	res.json(users)
-})
-
-app.post("/", (req, res) => {
-	console.log(req)
-})
+app.get("/users", logMiddleware, getAllUsers)
+app.get("/users/:id", getUserById)
+app.post("/users", createUser)
+app.put("/users/:id", updateUser)
+app.delete("/users/:id", deleteUser)
 
 app.listen(PORT, () => {
-	console.log(`Server is running on http://localhost:${PORT}`)
+	console.log(`Server is running on http://localhost:${PORT}/users`)
 })
