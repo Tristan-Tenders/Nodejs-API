@@ -10,6 +10,9 @@ const app = express()
 // Initialize database before starting server
 await initializeDatabase()
 
+Song.createTable()
+Song.seed()
+
 // Global middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
