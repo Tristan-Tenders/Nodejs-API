@@ -1,6 +1,6 @@
 import express from "express"
 import config from "./config/config.js"  // Import config
-import { logMiddleware } from "./middleware/logger.js"
+import { logMiddleware } from "./middleware/middleware.js"
 import { validateApiKey, validateApiKeyProduction } from "./middleware/apiKey.js"  // Import API key middleware
 import userRoutes from "./routes/userRoutes.js"
 import { initializeDatabase } from "./config/database.js"
