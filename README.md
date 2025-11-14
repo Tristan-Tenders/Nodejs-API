@@ -19,7 +19,7 @@ A simple REST API for managing a music collection, deployed on Render.
 
 ### Protected Endpoints (API Key Required)
 
-> Include your API key in the header as `X-API-Key: <YOUR_API_KEY>`
+> Include your API key in the header as `X-API-Key: my-super-secret-api-key-change-this-in-production`
 
 | Method | Endpoint     | Description         |
 | ------ | ------------ | ------------------- |
