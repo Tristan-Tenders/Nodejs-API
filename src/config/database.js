@@ -1,7 +1,7 @@
 import Database from 'better-sqlite3'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import config from './config.js'  // Import config
+import config from './config.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -30,14 +30,14 @@ export const initializeDatabase = async () => {
 	console.log('🔧 Initializing database...')
 	
 	// Import models
-	const User = (await import('../models/User.js')).default
+	const Song = (await import('../models/Song.js')).default
 	
 	// Create tables
-	User.createTable()
+	Song.createTable()
 	
 	// Only seed in development
 	if (config.isDevelopment()) {
-		User.seed()
+		Song.seed()
 	}
 	
 	console.log('✅ Database initialization complete')

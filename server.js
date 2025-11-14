@@ -1,6 +1,6 @@
 import express from "express"
 import { logMiddleware } from "./src/middleware/middleware.js"
-import userRoutes from "./src/routes/userRoutes.js"  // Import the router
+import userRoutes from "./src/routes/songRoutes.js"  // Import the router
 
 const app = express()
 const PORT = 3000

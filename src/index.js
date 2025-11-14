@@ -1,8 +1,8 @@
 import express from "express"
-import config from "./config/config.js"  // Import config
+import config from "./config/config.js"
 import { logMiddleware } from "./middleware/middleware.js"
-import { validateApiKey, validateApiKeyProduction } from "./middleware/apiKey.js"  // Import API key middleware
-import userRoutes from "./routes/userRoutes.js"
+import { validateApiKey, validateApiKeyProduction } from "./middleware/apiKey.js"
+import songRoutes from "./routes/songRoutes.js"
 import { initializeDatabase } from "./config/database.js"
 
 const app = express()
@@ -18,11 +18,11 @@ app.use(logMiddleware)
 // Public routes (no API key needed)
 app.get('/', (req, res) => {
 	res.json({ 
-		message: "Welcome to the API",
+		message: "Welcome to the Songs API",
 		version: "1.0.0",
 		environment: config.nodeEnv,
 		endpoints: {
-			users: "/users"
+			songs: "/songs"
 		}
 	})
 })
@@ -37,11 +37,11 @@ app.get('/health', (req, res) => {
 })
 
 // Protected routes (API key required)
-// Option 1: Protect all /users routes
-app.use('/users', validateApiKey, userRoutes)
+// Option 1: Protect all /songs routes
+app.use('/songs', validateApiKey, songRoutes)
 
 // Option 2: Only protect in production (easier for development)
-// app.use('/users', validateApiKeyProduction, userRoutes)
+// app.use('/songs', validateApiKeyProduction, songRoutes)
 
 // 404 handler
 app.use((req, res) => {
@@ -68,11 +68,11 @@ app.listen(config.port, () => {
 	console.log(`\nAPI Endpoints:`)
 	console.log(`  GET    /              - Welcome message (public)`)
 	console.log(`  GET    /health        - Health check (public)`)
-	console.log(`  GET    /users         - Get all users (protected)`)
-	console.log(`  GET    /users/:id     - Get user by ID (protected)`)
-	console.log(`  POST   /users         - Create new user (protected)`)
-	console.log(`  PUT    /users/:id     - Update user (protected)`)
-	console.log(`  DELETE /users/:id     - Delete user (protected)`)
+	console.log(`  GET    /songs         - Get all songs (protected)`)
+	console.log(`  GET    /songs/:id     - Get song by ID (protected)`)
+	console.log(`  POST   /songs         - Create new song (protected)`)
+	console.log(`  PUT    /songs/:id     - Update song (protected)`)
+	console.log(`  DELETE /songs/:id     - Delete song (protected)`)
 })
 
 export default app
